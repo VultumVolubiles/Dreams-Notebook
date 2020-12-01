@@ -1,4 +1,7 @@
 .idea
-.mvn
-mvnw
-mvnw.cmd
+.gradle
+
+build
+out
+*.db
+/src/main/resources/application-dev.yaml

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: version 1
+      author: generated
+  - include:
+      file: migrations/01_create_table_users.yaml
+      relativeToChangelogFile: true

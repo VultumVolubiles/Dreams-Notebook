@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: inser_admin
+      author: Vultum
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: login
+                  value: "ADMIN"
+              - column:
+                  name: name
+                  value: "ADMIN"
+              - column:
+                  name: password
+                  value: "ADMIN"
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: role_id
+                  value: 1

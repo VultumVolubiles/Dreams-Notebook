@@ -5,3 +5,15 @@ databaseChangeLog:
   - include:
       file: migrations/01_create_table_users.yaml
       relativeToChangelogFile: true
+  - include:
+      file: migrations/02_create_table_roles.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: migrations/03_create_table_user_roles.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: migrations/04_insert_roles.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: migrations/05_insert_admin.yaml
+      relativeToChangelogFile: true

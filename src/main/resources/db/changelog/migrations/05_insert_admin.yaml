@@ -17,7 +17,7 @@ databaseChangeLog:
                   value: "ADMIN"
               - column:
                   name: password
-                  value: "ADMIN"
+                  value: "QURNSU4=" # ADMIN
         - insert:
             tableName: user_roles
             columns:

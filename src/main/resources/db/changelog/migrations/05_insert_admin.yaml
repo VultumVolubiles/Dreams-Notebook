@@ -22,8 +22,8 @@ databaseChangeLog:
             tableName: user_roles
             columns:
               - column:
-                  name: user_id
+                  name: id_user
                   value: 1
               - column:
-                  name: role_id
+                  name: id_role
                   value: 1

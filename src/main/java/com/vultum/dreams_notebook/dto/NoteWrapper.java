@@ -10,6 +10,9 @@ public class NoteWrapper extends Wrapper<Note> {
     private Long id;
     private String title;
     private String text;
+    private Long dateCreate;
+    private Long dateUpdate;
+    private Long dateDream;
     private UserWrapper author;
 
     public NoteWrapper() {}
@@ -24,6 +27,9 @@ public class NoteWrapper extends Wrapper<Note> {
             id = item.getId();
             title = item.getTitle();
             text = item.getText();
+            dateCreate = item.getDateCreate();
+            dateUpdate = item.getDateUpdate();
+            dateDream = item.getDateDream();
             author = new UserWrapper(item.getAuthor());
         }
     }
@@ -33,6 +39,7 @@ public class NoteWrapper extends Wrapper<Note> {
         if (item != null) {
             item.setTitle(title);
             item.setText(text);
+            item.setDateDream(dateDream);
         }
     }
 }

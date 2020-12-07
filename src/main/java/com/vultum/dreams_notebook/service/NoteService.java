@@ -7,6 +7,7 @@ import com.vultum.dreams_notebook.entity.User;
 import com.vultum.dreams_notebook.repository.NoteRepository;
 import com.vultum.dreams_notebook.repository.UserRepository;
 import com.vultum.dreams_notebook.repository.specifications.NoteSpecification;
+import com.vultum.dreams_notebook.utils.DateUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -33,6 +34,8 @@ public class NoteService {
         Assert.notNull(wrapper, "Note is null");
 
         Note note = new Note();
+        note.setDateCreate(DateUtils.nowUnix());
+        note.setDateCreate(note.getDateCreate());
         wrapper.fromWrapper(note);
 
         Assert.notNull(wrapper.getAuthor(), "Author is null");
@@ -49,6 +52,7 @@ public class NoteService {
         Note note = repository.findOneById(wrapper.getId());
         Assert.notNull(note, "Note not found");
         wrapper.fromWrapper(note);
+        note.setDateUpdate(DateUtils.nowUnix());
 
         return new NoteWrapper(repository.save(note));
     }

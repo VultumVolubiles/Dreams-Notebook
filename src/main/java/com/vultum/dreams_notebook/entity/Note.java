@@ -21,6 +21,15 @@ public class Note {
     @Column
     private String text;
 
+    @Column(name = "date_create")
+    private Long dateCreate;
+
+    @Column(name = "date_create")
+    private Long dateUpdate;
+
+    @Column(name = "date_dream")
+    private Long dateDream;
+
     @ManyToOne
     @JoinColumn(name = "id_author")
     private User author;

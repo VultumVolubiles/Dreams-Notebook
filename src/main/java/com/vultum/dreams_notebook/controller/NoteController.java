@@ -1,6 +1,7 @@
 package com.vultum.dreams_notebook.controller;
 
 import com.vultum.dreams_notebook.dto.NoteWrapper;
+import com.vultum.dreams_notebook.dto.filter.Filter;
 import com.vultum.dreams_notebook.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +35,7 @@ public class NoteController {
     }
 
     @PostMapping("search")
-    public List<NoteWrapper> search() {
-//        return service.search(filter); todo
-        return null;
+    public List<NoteWrapper> search(@RequestBody Filter filter) {
+        return service.search(filter);
     }
 }

@@ -12,6 +12,12 @@ public class NoteWrapper extends Wrapper<Note> {
     private String text;
     private UserWrapper author;
 
+    public NoteWrapper() {}
+
+    public NoteWrapper(Note note) {
+        toWrapper(note);
+    }
+
     @Override
     public void toWrapper(Note item) {
         if (item != null) {

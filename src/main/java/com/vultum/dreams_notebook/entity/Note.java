@@ -18,5 +18,7 @@ public class Note {
     @Column
     private String title;
 
-    @Column String text;
+    @Column
+    private String text;
+
 }

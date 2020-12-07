@@ -17,3 +17,6 @@ databaseChangeLog:
   - include:
       file: migrations/05_insert_admin.yaml
       relativeToChangelogFile: true
+  - include:
+      file: migrations/06_create_table_notes.yaml
+      relativeToChangelogFile: true

@@ -24,7 +24,7 @@ public class Note {
     @Column(name = "date_create")
     private Long dateCreate;
 
-    @Column(name = "date_create")
+    @Column(name = "date_update")
     private Long dateUpdate;
 
     @Column(name = "date_dream")

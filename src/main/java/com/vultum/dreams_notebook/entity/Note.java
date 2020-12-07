@@ -21,4 +21,7 @@ public class Note {
     @Column
     private String text;
 
+    @ManyToOne
+    @JoinColumn(name = "id_author")
+    private User author;
 }

@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_column_id_author
+      author: Vultum
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: id_author
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_notes_user
+                    references: users(id)
+            tableName: notes

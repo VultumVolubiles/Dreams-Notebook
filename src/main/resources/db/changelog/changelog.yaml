@@ -23,3 +23,6 @@ databaseChangeLog:
   - include:
       file: migrations/07_add_column_id_author.yaml
       relativeToChangelogFile: true
+  - include:
+      file: migrations/08_add_date_columns.yaml
+      relativeToChangelogFile: true

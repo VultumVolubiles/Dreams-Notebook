@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_date_columns
+      author: Vultum
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: date_dream
+                  type: BIGINT
+              - column:
+                  name: date_create
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_update
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+            tableName: notes

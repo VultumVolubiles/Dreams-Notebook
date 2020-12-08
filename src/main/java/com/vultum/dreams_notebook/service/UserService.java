@@ -28,6 +28,7 @@ public class UserService {
         return new UserWrapper(user);
     }
 
+    // todo only for admins
     public UserWrapper create(UserWrapper wrapper) {
         Assert.notNull(wrapper, "User is null");
 

@@ -1,6 +1,6 @@
 package com.vultum.dreams_notebook.repository.specifications;
 
-import com.vultum.dreams_notebook.dto.filter.Filter;
+import com.vultum.dreams_notebook.dto.filter.NoteFilter;
 import com.vultum.dreams_notebook.entity.Note;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class NoteSpecification implements Specification<Note> {
 
-    public static NoteSpecification build(Filter filter) {
+    public static NoteSpecification build(NoteFilter filter) {
         return new NoteSpecification() {
             @Override
             public Predicate toPredicate(Root<Note> r, CriteriaQuery<?> q, CriteriaBuilder cb) {
@@ -27,7 +27,23 @@ public abstract class NoteSpecification implements Specification<Note> {
                         ));
                     }
 
-                    // todo ordering
+                    if(filter.getAuthor() != null)
+                        predicates.add(cb.equal(r.get("id_author"), filter.getAuthor()));
+
+                    switch (filter.getOrderBy()) {
+                        case DATE_DREAM: {
+                            q.orderBy(cb.desc(r.get("dateDream")));
+                            break;
+                        }
+                        case DATE_CREATE: {
+                            q.orderBy(cb.desc(r.get("dateCreate")));
+                            break;
+                        }
+                        case DATE_UPDATE: {
+                            q.orderBy(cb.desc(r.get("dateUpdate")));
+                            break;
+                        }
+                    }
                 }
 
                 return cb.and((Predicate[]) predicates.toArray());

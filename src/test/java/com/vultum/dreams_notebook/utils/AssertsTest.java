@@ -13,6 +13,6 @@ class AssertsTest {
 
     @Test
     void isNull() {
-        assertThrows(IllegalArgumentException.class, () -> Asserts.isNull(null, "Object not null"));
+        assertThrows(IllegalArgumentException.class, () -> Asserts.isNull(new Object(), "Object not null"));
     }
 }

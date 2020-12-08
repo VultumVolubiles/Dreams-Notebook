@@ -6,6 +6,7 @@ import com.vultum.dreams_notebook.dto.filter.NoteFilter;
 import com.vultum.dreams_notebook.enums.NoteSortingFields;
 import com.vultum.dreams_notebook.service.NoteService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -39,7 +40,7 @@ public class NoteController {
     }
 
     @PostMapping("search")
-    public List<NoteWrapper> search(@RequestBody NoteFilter filter) {
+    public Page<NoteWrapper> search(@RequestBody NoteFilter filter) {
         return service.search(filter);
     }
 

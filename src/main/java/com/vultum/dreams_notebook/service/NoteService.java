@@ -10,10 +10,10 @@ import com.vultum.dreams_notebook.repository.specifications.NoteSpecification;
 import com.vultum.dreams_notebook.utils.Asserts;
 import com.vultum.dreams_notebook.utils.DateUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -65,9 +65,9 @@ public class NoteService {
         repository.delete(note);
     }
 
-    public List<NoteWrapper> search(NoteFilter filter) {
-        // todo return Page<NoteWrapper>
-        List<Note> notes = repository.findAll(NoteSpecification.build(filter));
-        return notes.stream().map(NoteWrapper::new).collect(Collectors.toList());
+    public Page<NoteWrapper> search(NoteFilter filter) {
+        return repository.findAll(NoteSpecification.build(filter),
+                PageRequest.of(filter.getPage(), filter.getSize()))
+                .map(NoteWrapper::new);
     }
 }

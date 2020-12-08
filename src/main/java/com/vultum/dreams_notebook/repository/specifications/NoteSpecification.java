@@ -46,7 +46,7 @@ public abstract class NoteSpecification implements Specification<Note> {
                     }
                 }
 
-                return cb.and((Predicate[]) predicates.toArray());
+                return cb.and(predicates.toArray(new Predicate[predicates.size()]));
             }
         };
     }

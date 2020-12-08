@@ -32,7 +32,7 @@ public abstract class NoteSpecification implements Specification<Note> {
 
                     switch (filter.getOrderBy()) {
                         case DATE_DREAM: {
-                            q.orderBy(cb.desc(r.get("dateDream")));
+                            q.orderBy(cb.desc(r.get("dateDream")), cb.desc(r.get("dateCreate")));
                             break;
                         }
                         case DATE_CREATE: {
@@ -40,7 +40,7 @@ public abstract class NoteSpecification implements Specification<Note> {
                             break;
                         }
                         case DATE_UPDATE: {
-                            q.orderBy(cb.desc(r.get("dateUpdate")));
+                            q.orderBy(cb.desc(r.get("dateUpdate")), cb.desc(r.get("dateCreate")));
                             break;
                         }
                     }

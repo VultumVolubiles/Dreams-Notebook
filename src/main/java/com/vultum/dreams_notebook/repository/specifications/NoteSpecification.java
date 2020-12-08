@@ -28,7 +28,7 @@ public abstract class NoteSpecification implements Specification<Note> {
                     }
 
                     if(filter.getAuthor() != null)
-                        predicates.add(cb.equal(r.get("id_author"), filter.getAuthor()));
+                        predicates.add(cb.equal(r.get("author"), filter.getAuthor()));
 
                     switch (filter.getOrderBy()) {
                         case DATE_DREAM: {

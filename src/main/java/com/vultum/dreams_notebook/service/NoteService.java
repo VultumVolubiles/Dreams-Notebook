@@ -39,7 +39,7 @@ public class NoteService {
         wrapper.fromWrapper(note);
 
         Assert.notNull(wrapper.getAuthor(), "Author is null");
-        User user = userRepository.findOneById(wrapper.getAuthor().getId());
+        User user = userRepository.findOneById(wrapper.getAuthor());
         Assert.notNull(user, "User not found");
         note.setAuthor(user);
 

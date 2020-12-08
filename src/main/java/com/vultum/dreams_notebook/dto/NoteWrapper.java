@@ -13,7 +13,7 @@ public class NoteWrapper extends Wrapper<Note> {
     private Long dateCreate;
     private Long dateUpdate;
     private Long dateDream;
-    private UserWrapper author;
+    private Long author;
 
     public NoteWrapper() {}
 
@@ -30,7 +30,7 @@ public class NoteWrapper extends Wrapper<Note> {
             dateCreate = item.getDateCreate();
             dateUpdate = item.getDateUpdate();
             dateDream = item.getDateDream();
-            author = new UserWrapper(item.getAuthor());
+            author = item.getAuthor().getId();
         }
     }
 

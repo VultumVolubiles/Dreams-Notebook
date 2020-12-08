@@ -48,5 +48,25 @@ public class UserService {
         return new UserWrapper(repository.save(user));
     }
 
+    public UserWrapper update(UserWrapper wrapper) {
+        Assert.notNull(wrapper, "User is null");
+        Assert.notNull(wrapper.getId(), "User id is null");
+
+        User user = repository.findOneById(wrapper.getId());
+        Assert.notNull(user, "User not found");
+
+        // todo check roles of current user before set new roles
+        Set<Role> roles = roleRepository.findAllByNameIn(wrapper.getRoles()
+                .stream()
+                .map(RoleWrapper::getName)
+                .collect(Collectors.toList()));
+        if (roles.size() < wrapper.getRoles().size()) {
+            throw new NullPointerException("Not all roles founded");
+        }
+        user.setRoles(roles);
+
+        wrapper.fromWrapper(user);
+        return new UserWrapper(repository.save(user));
+    }
 
 }

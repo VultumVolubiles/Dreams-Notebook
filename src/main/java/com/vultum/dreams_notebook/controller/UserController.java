@@ -16,9 +16,14 @@ public class UserController {
         return service.getById(id);
     }
 
-    @PostMapping
+    @PostMapping("create")
     public UserWrapper create(@RequestBody UserWrapper wrapper) {
         return service.create(wrapper);
+    }
+
+    @PostMapping
+    public UserWrapper update(@RequestBody UserWrapper wrapper) {
+        return service.update(wrapper);
     }
 
 

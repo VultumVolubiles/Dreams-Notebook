@@ -28,7 +28,7 @@ public class UserService {
         return new UserWrapper(user);
     }
 
-    // todo only for admins
+    // TODO only for admins
     public UserWrapper create(UserWrapper wrapper) {
         Assert.notNull(wrapper, "User is null");
 
@@ -56,16 +56,18 @@ public class UserService {
         User user = repository.findOneById(wrapper.getId());
         Assert.notNull(user, "User not found");
 
-        // todo check roles of current user before set new roles
         Set<Role> roles = roleRepository.findAllByNameIn(wrapper.getRoles()
                 .stream()
                 .map(RoleWrapper::getName)
                 .collect(Collectors.toList()));
-        if (roles.size() < wrapper.getRoles().size()) {
+        // TODO if old roles not equals new roles check admin role in current user
+        // if admin {
+        Set<String> oldRoles = wrapper.getRoles().stream().map(RoleWrapper::getName).collect(Collectors.toSet());
+        Set<String> newRoles = roles.stream().map(Role::getName).collect(Collectors.toSet());
+        if (!oldRoles.equals(newRoles))
             throw new NullPointerException("Not all roles founded");
-        }
         user.setRoles(roles);
-
+        // }
         wrapper.fromWrapper(user);
         return new UserWrapper(repository.save(user));
     }

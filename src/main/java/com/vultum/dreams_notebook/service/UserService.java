@@ -72,4 +72,5 @@ public class UserService {
         return new UserWrapper(repository.save(user));
     }
 
+    // TODO block or deleting user
 }

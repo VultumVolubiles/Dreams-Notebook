@@ -66,6 +66,7 @@ public class NoteService {
     }
 
     public List<NoteWrapper> search(NoteFilter filter) {
+        // todo return Page<NoteWrapper>
         List<Note> notes = repository.findAll(NoteSpecification.build(filter));
         return notes.stream().map(NoteWrapper::new).collect(Collectors.toList());
     }

@@ -1,12 +1,16 @@
 package com.vultum.dreams_notebook.controller;
 
+import com.vultum.dreams_notebook.dto.EnumWrapper;
 import com.vultum.dreams_notebook.dto.NoteWrapper;
 import com.vultum.dreams_notebook.dto.filter.NoteFilter;
+import com.vultum.dreams_notebook.enums.NoteSortingFields;
 import com.vultum.dreams_notebook.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/notes")
@@ -37,5 +41,12 @@ public class NoteController {
     @PostMapping("search")
     public List<NoteWrapper> search(@RequestBody NoteFilter filter) {
         return service.search(filter);
+    }
+
+    @GetMapping("sorting")
+    public List<EnumWrapper> sortingFields() {
+        return Arrays.stream(NoteSortingFields.values())
+                .map(f -> new EnumWrapper(f.getName(), f.toString()))
+                .collect(Collectors.toList());
     }
 }

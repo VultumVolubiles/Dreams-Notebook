@@ -1,6 +1,5 @@
 package com.vultum.dreams_notebook.dto;
 
-import com.vultum.dreams_notebook.entity.Role;
 import com.vultum.dreams_notebook.entity.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,7 +36,6 @@ public class UserWrapper extends Wrapper<User> {
     @Override
     public void fromWrapper(User item) {
         if (item != null) {
-            item.setLogin(this.login);
             item.setName(this.name);
         }
     }

@@ -35,7 +35,7 @@ public class NoteService {
 
         Note note = new Note();
         note.setDateCreate(DateUtils.nowUnix());
-        note.setDateCreate(note.getDateCreate());
+        note.setDateUpdate(note.getDateCreate());
         wrapper.fromWrapper(note);
 
         Assert.notNull(wrapper.getAuthor(), "Author is null");

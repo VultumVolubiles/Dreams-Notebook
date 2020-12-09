@@ -2,6 +2,7 @@ package com.vultum.dreams_notebook.dto.auth;
 
 import com.vultum.dreams_notebook.entity.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -15,7 +16,7 @@ public class UserDetail implements UserDetails {
     public UserDetail(User user) {
         login = user.getLogin();
         password = user.getPassword();
-        user.getRoles().forEach(r -> authorities.add(new Authority(r.getName())));
+        user.getRoles().forEach(r -> authorities.add(new SimpleGrantedAuthority(r.getName())));
     }
 
     @Override

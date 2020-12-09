@@ -1,6 +1,6 @@
-package com.vultum.dreams_notebook.service;
+package com.vultum.dreams_notebook.security;
 
-import com.vultum.dreams_notebook.dto.auth.UserDetail;
+import com.vultum.dreams_notebook.security.UserDetail;
 import com.vultum.dreams_notebook.entity.User;
 import com.vultum.dreams_notebook.repository.UserRepository;
 import com.vultum.dreams_notebook.utils.Asserts;
